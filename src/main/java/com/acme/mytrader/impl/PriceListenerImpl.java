@@ -37,16 +37,4 @@ public class PriceListenerImpl implements PriceListener {
         System.out.println("Security price pushed " + pricePushed);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PriceListenerImpl)) return false;
-        PriceListenerImpl that = (PriceListenerImpl) o;
-        return Objects.equals(priceListenerId, that.priceListenerId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(priceListenerId);
-    }
 }

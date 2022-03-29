@@ -35,10 +35,8 @@ public class TradingStrategy {
         PriceSource priceSource = new PriceSourceImpl(securities);
         priceSource.addPriceListener(priceListener);
         ExecutorService executorServiceForExecutionService = Executors.newSingleThreadExecutor();
-
-        priceSource.generateSecurityPrice(55);
         tradingStrategy. executeBuyOrSell(blockingQueue, buyPrice,executionService,executorServiceForExecutionService);
-
+        priceSource.generateSecurityPrice(55);
     }
 
 

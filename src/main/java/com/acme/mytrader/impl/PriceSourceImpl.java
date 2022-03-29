@@ -8,10 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PriceSourceImpl implements PriceSource {
+    public List<PriceListener> getPriceListenerList() {
+        return priceListenerList;
+    }
+
+    public void setPriceListenerList(List<PriceListener> priceListenerList) {
+        this.priceListenerList = priceListenerList;
+    }
 
     private final List<Security> securityList ;
 
-    private final List<PriceListener> priceListenerList = new ArrayList<>();
+    private  List<PriceListener> priceListenerList = new ArrayList<>();
 
     public PriceSourceImpl(List<Security> securityList) {
         this.securityList = securityList;
