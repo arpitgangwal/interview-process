@@ -51,9 +51,7 @@ public class PriceSourceImpl implements PriceSource {
 
     private void notifyObservers(Security security, double price) {
         if (this.priceListenerList != null) {
-            for (PriceListener priceListener : priceListenerList) {
-                priceListener.priceUpdate(security.getSecurityId(), price);
-            }
+            priceListenerList.parallelStream().forEach(p->p.priceUpdate(security.getSecurityId(), price));
         }
     }
 
