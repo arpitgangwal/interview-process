@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 
 public class PriceListenerImpl implements PriceListener {
-    public BlockingQueue<SecurityPrice> blockingQueue;
+    public final BlockingQueue<SecurityPrice> blockingQueue;
     private final String priceListenerId;
 
     public PriceListenerImpl(BlockingQueue<SecurityPrice> blockingQueue) {
@@ -37,4 +37,16 @@ public class PriceListenerImpl implements PriceListener {
         System.out.println("Security price pushed " + pricePushed);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PriceListenerImpl that = (PriceListenerImpl) o;
+        return blockingQueue.equals(that.blockingQueue) && priceListenerId.equals(that.priceListenerId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(blockingQueue, priceListenerId);
+    }
 }
